@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row register-form mt-5 mb-5">
+        <div class="col-8 offset-2">
+            <h1>Use this form in order to create your account in our system!</h1>
+        </div>
+    </div>
+    <form name="registerForm">
+        <div class="row register-form mt-5">
+            <div class="col-1 offset-2 register-form-label">
+                First name:
+            </div>
+            <div class="col-3">
+                <input type="text" name="firstname" ng-model="firstname" required>
+                <p class="form-alert" ng-show="validateFirstname = registerForm.firstname.$invalid && registerForm.firstname.$touched">First name is required</p><br>
+            </div>
+            <div class="col-1 register-form-label">
+                Last name:
+            </div>
+            <div class="col-3">
+                <input type="text" name="surname" ng-model="surname" required>
+                <p class="form-alert" ng-show="validateSurname = registerForm.surname.$invalid && registerForm.surname.$touched">Last name is required</p>
+            </div>
+        </div>
+        <div class="row register-form mt-5">
+            <div class="col-1 offset-2 register-form-label">
+                Your index no:
+            </div>
+            <div class="col-3">
+                <input type="text" name="inumber" ng-model="inumber" ng-pattern="/^.{6,}$/" required>
+                <p class="form-alert" ng-show="validateInumber = registerForm.inumber.$error.required && registerForm.inumber.$touched">Your index no is required</p><br>
+                <p class="form-alert" ng-show="validateInumber2 = registerForm.inumber.$error.pattern">Your index no should contains at least 6 characters</p>
+            </div>
+            <div class="col-1 register-form-label">
+
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row register-form mt-5">
+            <div class="col-1 offset-2 register-form-label">
+                Password:
+            </div>
+            <div class="col-3">
+                <input type="password" name="password" ng-model="password" ng-pattern="/^.{6,}$/" required>
+                <p class="form-alert" ng-show="validatePassword = registerForm.password.$error.required && registerForm.password.$touched">Password is required</p>
+                <p class="form-alert" ng-show="validatePassword2 = registerForm.password.$error.pattern">Your password should contains at least 6 characters</p>
+            </div>
+            <div class="col-1 register-form-label">
+                Confirm password:
+            </div>
+            <div class="col-3">
+                <input type="password" name="rpassword" ng-model="rpassword" required>
+                <p class="form-alert" ng-show="validatePassword = registerForm.rpassword.$invalid && registerForm.rpassword.$touched">Confirm your password</p>
+                <p class="form-alert" ng-show="samePassword()">Passwords are not identical</p>
+            </div>
+        </div>
+        <div class="row register-form mt-5">
+            <div class="col-8 offset-2">
+                <input type="checkbox" name="policy" ng-model="policy"> By creating an account I am accepting <a href="/privacy">privacy policy.</a>
+                <p class="form-alert" ng-show="!policy && registerForm.policy.$touched">This consent is required</p>
+            </div>
+        </div>
+        <div class="row register-form mt-5">
+            <div class="col-4 offset-4">
+                <p class="register-form-button" ng-click="submit()">Send</p>
+            </div>
+        </div>
+    </form>
+</div>

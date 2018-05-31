@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row login-form mt-5">
+        <div class="col-12">
+            <h2>Set new password</h2>
+        </div>
+    </div>
+    <form name="registerForm">
+        <div class="row login-form mt-5">
+            <div class="col-3 offset-3">
+                <span class="login-form-label">New password:</span>
+                <input type="password" name="password" ng-model="password" ng-pattern="/^.{6,}$/" required>
+                <p class="form-alert" ng-show="validatePassword = registerForm.password.$error.required && registerForm.password.$touched">New password is required.</p>
+                <p class="form-alert" ng-show="validatePassword2 = registerForm.password.$error.pattern">Your new password should contains at least 6 characters.</p>
+                <span class="login-form-label">Confirm new password:</span>
+                <input type="password" name="rpassword" ng-model="rpassword" required>
+                <p class="form-alert" ng-show="validatePassword = registerForm.rpassword.$invalid && registerForm.rpassword.$touched">Confirm your new password.</p>
+                <p class="form-alert" ng-show="samePassword()">Given passwords are not identical.</p>
+                <button class="login-form-button" ng-click="submit()">Send</button>
+            </div>
+    </form>
+    <div class="col-3 mt-5">
+        <p class="login-intro">Give your new password, which you will use in our system!</p>
+    </div>
+</div>
+
+
+

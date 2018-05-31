@@ -1,0 +1,114 @@
+.cpredictions-group-button {
+    background-color: var(--main-blue);
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: medium;
+    padding: 15px;
+    cursor: pointer;
+    -webkit-transition: background-color 400ms; /* Safari */
+    transition: background-color 400ms;
+}
+
+.cpredictions-group-button:hover {
+    background-color: var(--main-red);
+    color: white;
+}
+
+.cpredictions-group-table table {
+    width: 100%;
+    padding: 30px 25px;
+    color: #252525;
+}
+
+.cpredictions-group-table tr:nth-child(2) {
+    background-color: #023684;
+    color: white;
+}
+
+.cpredictions-group-table tr:nth-child(3) {
+    background-color: #1569b5;
+    color: white;
+}
+
+
+.cpredictions-group-table-header {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #303030;
+    color: white;
+    padding: 10px 20px;
+}
+
+.cpredictions-group-table-child {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 50px;
+    padding: 10px 20px;
+    border-bottom: 1px #c5c5c5 solid;
+}
+
+.cpredictions-button button {
+    background-color: var(--main-blue);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition: background-color 400ms; /* Safari */
+    transition: background-color 400ms;
+}
+
+.cpredictions-button button:disabled {
+    background-color: #aaaaaa;
+}
+
+.cpredictions-button button:disabled:hover {
+    background-color: #aaaaaa;
+}
+
+.cpredictions-button button:hover {
+    background-color: var(--main-red);
+}
+
+.cpredictions-cup-team {
+    width: 25%;
+    margin: 5px 10px;
+    background-color: #606060;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.cpredictions-cup-winner {
+    width: 25%;
+    margin: 5px 10px;
+    background-color: var(--main-blue);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.cpredictions-cup-vs {
+    font-size: 20px;
+    color: var(--main-blue);
+    font-weight: bold;
+}
+
+.cpredictions-flag {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}

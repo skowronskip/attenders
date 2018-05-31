@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="TyperMS">
+<head>
+    <title>Attenders</title>
+    <base href="/" />
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+    <script src="../bower_components/angular-sessionstorage/angular-sessionstorage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/moment/min/moment-with-locales.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="app_router.js"></script>
+    <script src="controllers/loginController.js"></script>
+    <script src="controllers/registerController.js"></script>
+    <script src="controllers/forgotController.js"></script>
+    <script src="controllers/mainController.js"></script>
+    <script src="controllers/resetController.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Palanquin" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/angular-ui-notification/dist/angular-ui-notification.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div ng-if="!isLogged()" ng-include="'views/nav/nav.beforelogin.html'"></div>
+<div ng-if="isLogged()" ng-include="'views/nav/nav.afterlogin.html'"></div>
+
+<div ng-view></div>
+
+<div ng-include="'views/footer.html'"></div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row login-form mt-5">
+        <div class="col-12">
+            <h2>Reset password</h2>
+        </div>
+    </div>
+    <form name="forgot">
+        <div class="row login-form mt-5">
+            <div class="col-3 offset-3">
+                <span class="login-form-label">Your index no:</span>
+                <input type="text" name="inumber" ng-model="inumber" required>
+                <p class="form-alert" ng-show="validateInumber = forgot.inumber.$invalid && forgot.inumber.$touched">Give your index number</p>
+
+                <button class="login-form-button" ng-click="submit()">Send</button>
+            </div>
+    </form>
+    <div class="col-3 mt-3">
+        <p class="login-intro">Give us your index number!</p>
+        <p class="login-intro">We will send and link which allows you to set new password!</p>
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+@import url("navigation.css");
+@import url("register.css");
+@import url("login.css");
+@import url("createpredictions.css");
+@import url("mypredictions.css");
+@import url("allpredictions.css");
+@import url("footer.css");
+
+:root {
+    --main-blue: #128545;
+    --main-red: #086020;
+}
+body {
+    font-family: 'Palanquin', sans-serif;
+    background-color: #f9f9f9;
+    height: 100%;
+}
+
+h1 {
+    color: var(--main-blue);
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--main-blue);
+    font-size: 28px;
+    text-align: center;
+}
+
+.form-alert {
+    width: 100%;
+    color: white;
+    background-color: #ee3030;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px 0;
+    margin-top: 10px;
+}

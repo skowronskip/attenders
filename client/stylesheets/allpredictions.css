@@ -1,0 +1,25 @@
+.allpredictions-header {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--main-blue);
+    color: white;
+    padding: 10px 15px;
+}
+
+.allpredictions-child {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-bottom: 1px #c5c5c5 solid;
+}
+
+.allpredictions-child:hover {
+    background-color: #e5e5e5;
+}
+
+.allpredictions-flag {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    margin-top: -3px;
+}

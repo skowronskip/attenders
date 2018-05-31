@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row login-form mt-5">
+        <div class="col-12">
+            <h2>Login panel</h2>
+        </div>
+    </div>
+    <form name="myForm">
+        <div class="row login-form mt-5">
+            <div class="col-3 offset-3">
+                <span class="login-form-label">Your index no:</span>
+                <input type="text" name="login" ng-model="login" required>
+                <p class="form-alert" ng-show="validateLogin = myForm.login.$invalid && myForm.login.$touched">Give your index no</p>
+                <span class="login-form-label">Password:</span>
+                <input type="password" name="password" ng-model="password" required>
+                <div ng-show="validatePassword = myForm.password.$invalid && myForm.password.$touched">Give your password</div>
+                <a href="/forgot">Forgot password?</a>
+                <button class="login-form-button" ng-click="submit()">Log in</button>
+            </div>
+    </form>
+    <div class="col-3 mt-5">
+        <p class="login-intro">Log in and start checking in your attendance!</p>
+        <p class="login-intro">Our system is easy to use and user friendly!</p>
+    </div>
+</div>
+
+
+
