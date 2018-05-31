@@ -6,3 +6,4 @@ How to set up application locally.
 3. Pull repository to your local directory
 4. Run commands in terminal: 'npm install; bower install'. If the 'bower install' is not workinkg type 'npm install -g bower' first.
 5. Run your local server: 'node app.js' But for developing approach use 'nodemon'.
+6. Open 'http://localhost:3000' in your web browser.
