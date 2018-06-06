@@ -24,6 +24,12 @@ addUser = function (content) {
       else{
         content.password = bcrypt.hashSync(content.password, salt);
         content.activationToken = rand.generate(24);
+        if(content.indexNumber){
+            content.role = 'STUDENT';
+        }
+        else {
+            content.role = 'LECTURER';
+        }
         User.create(content).then(function(user){
           res(user);
         });
@@ -34,7 +40,8 @@ addUser = function (content) {
 
 findUser = function (content) {
   return new promise(function (res, rej) {
-    User.findOne({indexNumber: content.login}, function(err,obj){
+      console.log(content);
+    User.findOne({$or: [{indexNumber: content.login}, {firstName: content.firstName, lastName: content.lastName}]}, function(err,obj){
       if(err) throw err;
       if(obj) {
         bcrypt.compare(content.password, obj.password, function (err, resp) {
@@ -86,10 +93,25 @@ router.post('/register', function(req, resp){
     if(newUser.message){
         resp.status(409).send(newUser.message);
     }
-    else {
+    else if(newUser.role === 'STUDENT'){
         mail.sendMail({
             from: 'ntife17@gmail.com',
             to: newUser.indexNumber + '@edu.p.lodz.pl',
+            subject: 'Active your account [Attenders]',
+            text: 'Click in the link in order to active your account: http://' + hostname + '/activate/' + newUser.activationToken
+        }, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+        resp.end(JSON.stringify(newUser));
+    }
+    else {
+        mail.sendMail({
+            from: 'ntife17@gmail.com',
+            to: newUser.firstName + '.' + newUser.lastName + '@edu.p.lodz.pl',
             subject: 'Active your account [Attenders]',
             text: 'Click in the link in order to active your account: http://' + hostname + '/activate/' + newUser.activationToken
         }, function(error, info){

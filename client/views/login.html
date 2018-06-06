@@ -7,9 +7,13 @@
     <form name="myForm">
         <div class="row login-form mt-5">
             <div class="col-3 offset-3">
-                <span class="login-form-label">Your index no:</span>
-                <input type="text" name="login" ng-model="login" required>
-                <p class="form-alert" ng-show="validateLogin = myForm.login.$invalid && myForm.login.$touched">Give your index no</p>
+                <input type="checkbox" name="isLecturer" ng-model="isLecturer"> I am the Lecturer<br><br>
+                <span ng-show="isLecturer" class="login-form-label">First name:</span>
+                <input ng-show="isLecturer" type="text" name="firstName" ng-model="firstName">
+                <span ng-show="isLecturer" class="login-form-label">Last name:</span>
+                <input ng-show="isLecturer" type="text" name="lastName" ng-model="lastName">
+                <span ng-show="!isLecturer" class="login-form-label">Your index no:</span>
+                <input ng-show="!isLecturer" type="text" name="login" ng-model="login" required>
                 <span class="login-form-label">Password:</span>
                 <input type="password" name="password" ng-model="password" required>
                 <div ng-show="validatePassword = myForm.password.$invalid && myForm.password.$touched">Give your password</div>

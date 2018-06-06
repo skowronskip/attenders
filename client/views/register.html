@@ -27,7 +27,6 @@
             </div>
             <div class="col-3">
                 <input type="text" name="inumber" ng-model="inumber" ng-pattern="/^.{6,}$/" required>
-                <p class="form-alert" ng-show="validateInumber = registerForm.inumber.$error.required && registerForm.inumber.$touched">Your index no is required</p><br>
                 <p class="form-alert" ng-show="validateInumber2 = registerForm.inumber.$error.pattern">Your index no should contains at least 6 characters</p>
             </div>
             <div class="col-1 register-form-label">

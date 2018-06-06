@@ -1,7 +1,7 @@
 app.controller('registerCtrl', function($rootScope, $scope, $http, Notification, $cookies, $location){
     $scope.firstname = '';
     $scope.surname = '';
-    $scope.inumber = '';
+    $scope.inumber = undefined;
     $scope.login = '';
     $scope.password = '';
     $scope.rpassword = '';
@@ -11,7 +11,6 @@ app.controller('registerCtrl', function($rootScope, $scope, $http, Notification,
     $scope.validatePassword = false;
     $scope.validatePassword2 = false;
     $scope.validateRpassword = false;
-    $scope.validateInumber = false;
     $scope.validateInumber2 = false;
     $scope.validateLogin = false;
 
@@ -20,7 +19,7 @@ app.controller('registerCtrl', function($rootScope, $scope, $http, Notification,
     };
 
     $scope.submit = function() {
-        if(!$scope.samePassword()  && !$scope.validateFirstname && !$scope.validateSurname && !$scope.validatePassword && !$scope.validatePassword2 && !$scope.validateInumber  && !$scope.validateInumber2 && !$scope.validateRpassword && $scope.policy){
+        if(!$scope.samePassword()  && !$scope.validateFirstname && !$scope.validateSurname && !$scope.validatePassword && !$scope.validatePassword2 && !$scope.validateInumber2 && !$scope.validateRpassword && $scope.policy){
             $http.post('/register', {"password": $scope.password,
                                         "firstName": $scope.firstname,
                                         "lastName": $scope.surname,

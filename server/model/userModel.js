@@ -15,8 +15,7 @@ const UserSchema = new Schema({
     required: [true, 'Password is required']
   },
   indexNumber: {
-    type: String,
-    required: [true, 'E-mail is required']
+    type: String
   },
   active: {
     type: Boolean,
@@ -34,6 +33,9 @@ const UserSchema = new Schema({
     },
     creationDate: {
     type: Date
+    },
+    role: {
+        type: String
     }
 });
 
