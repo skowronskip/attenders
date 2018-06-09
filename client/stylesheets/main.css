@@ -2,6 +2,7 @@
 @import url("register.css");
 @import url("login.css");
 @import url("footer.css");
+@import url("subject.css");
 
 :root {
     --main-blue: #128545;
@@ -26,6 +27,11 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    color: var(--main-blue);
+    font-size: 18px;
+}
+
 .form-alert {
     width: 100%;
     color: white;
@@ -34,4 +40,41 @@ h2 {
     font-size: 14px;
     padding: 5px 0;
     margin-top: 10px;
+}
+
+.btn-color-full  {
+    width:100%;
+    margin:0;
+    background-color: var(--main-blue);
+    color: white;
+    font-size: 18px;
+    padding: 5px 0 8px 0;
+    border: none;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: background-color 400ms; /* Safari */
+    transition: background-color 400ms;
+}
+
+.btn-color-full:hover {
+    background-color: var(--main-red);
+}
+
+.btn-nocolor-full  {
+    width:100%;
+    margin:0;
+    border: 2px solid var(--main-blue);
+    background-color: #f9f9f9;
+    color: var(--main-blue);
+    font-size: 18px;
+    padding: 5px 0 8px 0;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: background-color 400ms, color 400ms; /* Safari */
+    transition: background-color 400ms color, 400ms;
+}
+
+.btn-nocolor-full:hover {
+    background-color: var(--main-blue);
+    color: white;
 }

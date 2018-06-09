@@ -1,4 +1,4 @@
-var app = angular.module('TyperMS', ['ngRoute', 'ui-notification', 'ngCookies', 'ngSessionStorage']);
+var app = angular.module('Attenders', ['ngRoute', 'ui-notification', 'ngCookies', 'ngSessionStorage', 'ngMessages', 'ngMaterial']);
 app.run(function ($rootScope, $cookies, $location, Notification, $http, $sessionStorage, $interval) {
     moment.locale('pl');
     $rootScope.testvariable = 'No witam Cie z rootscope';

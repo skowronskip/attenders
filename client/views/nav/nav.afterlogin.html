@@ -4,7 +4,7 @@
             {{timeNow()}}
         </div>
         <div class="col-7 text-right">
-            {{ 'Witaj ' + loggedUser.login}}
+            {{ 'Witaj ' + loggedUser.firstName + ' ' + loggedUser.lastName}}
         </div>
     </div>
     <div class="row navigation-bar justify-content-center">
@@ -15,6 +15,8 @@
             <a href="/">Home</a>
         </div>
         <div class="col-4 navigation-bar-button text-right">
+            <a ng-if="loggedUser.role === 'LECTURER'" href="/lecturer/subjects">Subjects</a>
+            <a ng-if="loggedUser.role === 'LECTURER'" href="/lectures">Lectures</a>
             <a href="/" ng-click="logout()">Log out</a>
         </div>
     </div>

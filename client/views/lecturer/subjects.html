@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-2">
+            <button class="btn-nocolor-full" ng-click="addingSubject = true">New subject</button>
+        </div>
+    </div>
+    <div ng-if="addingSubject" class="newSubject-form">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form name="newSubjectForm" ng-submit="addSubject(newSubjectForm.$valid)" method="post" novalidate autocomplete="off">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Name of new subject:</h3>
+                            <input id="name" name="name" type="text" ng-required="true" ng-model="form.name">
+                            <div ng-if="newSubjectForm.name.$invalid && formError" ng-messages="newSubjectForm.name.$error">
+                                <p ng-message="required" class="form-alert">Name is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <h3>Department:</h3>
+                            <select name="department" ng-required="true" ng-model="form.currentDepartment" ng-options="value as value.name for value in departments" ng-change="updateCourses()">
+                                <option>--</option>
+                            </select>
+                            <div ng-if="newSubjectForm.department.$invalid && formError" ng-messages="newSubjectForm.department.$error">
+                                <p ng-message="required" class="form-alert">Department is required</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <h3>Course:</h3>
+                            <select name="course" ng-required="true" ng-model="form.course" ng-options="value as value.name for value in currentCourses">
+                                <option>--</option>
+                            </select>
+                            <div ng-if="newSubjectForm.course.$invalid && formError" ng-messages="newSubjectForm.course.$error">
+                                <p ng-message="required" class="form-alert">Course is required</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <h3>Semester:</h3>
+                            <input id="semester" name="semester" type="number" ng-model="form.semester" ng-required="true" min="1" max="8">
+                            <div ng-if="newSubjectForm.semester.$invalid && formError" ng-messages="newSubjectForm.semester.$error">
+                                <p ng-message="required" class="form-alert">Semester is required</p>
+                                <p ng-message="min" class="form-alert">The number is too small</p>
+                                <p ng-message="max" class="form-alert">The number is too large</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-2 mb-5">
+                        <div class="col-4">
+                            <button class="btn-color-full" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="row subjects-header">
+                <div class="col-1">No</div>
+                <div class="col-3">Name</div>
+                <div class="col-3">Department</div>
+                <div class="col-3">Course</div>
+                <div class="col-2">Semester</div>
+            </div>
+            <div ng-repeat="subject in mySubjects | orderBy : 'name'" class="row subjects-child">
+                <div class="col-1">{{$index + 1}}</div>
+                <div class="col-3">{{subject.name}}</div>
+                <div class="col-3">{{subject.department}}</div>
+                <div class="col-3">{{subject.course}}</div>
+                <div class="col-2">{{subject.semester}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,27 +22,15 @@ app.config(function($routeProvider, $locationProvider, $rootScopeProvider) {
             templateUrl : "views/reset.html",
             controller: 'resetCtrl'
         })
-        .when("/predictions", {
-            templateUrl : "views/predictions.html",
-            controller: 'predictionsCtrl'
-        })
-        .when("/createPredictions", {
-            templateUrl : "views/createpredictions.html",
-            controller: 'createPredictionsCtrl'
-        })
-        .when("/myPredictions", {
-            templateUrl : "views/mypredictions.html",
-            controller: 'myPredictionsCtrl'
-        })
-        .when("/user/:login", {
-            templateUrl : "views/userpredictions.html",
-            controller: 'userPredictionsCtrl'
-        })
         .when("/privacy", {
             templateUrl : "views/privacypolicy.html"
         })
-        .when("/allPredictions", {
-            templateUrl : "views/allpredictions.html",
-            controller: 'allPredictionsCtrl'
+        .when("/lectures", {
+            templateUrl : "views/lecturer/lectures.html",
+            controller: 'lecturesCtrl'
+        })
+        .when("/lecturer/subjects", {
+            templateUrl : "views/lecturer/subjects.html",
+            controller: 'subjectsCtrl'
         });
 });

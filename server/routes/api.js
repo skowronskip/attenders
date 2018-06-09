@@ -40,7 +40,6 @@ addUser = function (content) {
 
 findUser = function (content) {
   return new promise(function (res, rej) {
-      console.log(content);
     User.findOne({$or: [{indexNumber: content.login}, {firstName: content.firstName, lastName: content.lastName}]}, function(err,obj){
       if(err) throw err;
       if(obj) {
