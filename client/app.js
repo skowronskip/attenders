@@ -1,6 +1,6 @@
 var app = angular.module('Attenders', ['ngRoute', 'ui-notification', 'ngCookies', 'ngSessionStorage', 'ngMessages', 'ngMaterial']);
 app.run(function ($rootScope, $cookies, $location, Notification, $http, $sessionStorage, $interval) {
-    moment.locale('pl');
+    moment.locale('gb');
     $rootScope.testvariable = 'No witam Cie z rootscope';
     $rootScope.loggedUser = {};
     $rootScope.hostname = 'typerms.atthost24.pl';
@@ -39,7 +39,7 @@ app.run(function ($rootScope, $cookies, $location, Notification, $http, $session
             $sessionStorage.remove('auth');
             $rootScope.loggedUser = {};
             $location.path('/');
-            Notification.success({message: 'Zostałeś wylogowany', delay: 5000});
+            Notification.success({message: 'You are logged out', delay: 5000});
         }
     };
 
@@ -48,31 +48,6 @@ app.run(function ($rootScope, $cookies, $location, Notification, $http, $session
     };
 
     var stopTime = $interval($rootScope.timeNow, 1000);
-
-    $rootScope.timeToWorldCupDays = function () {
-        var now = new moment();
-        var wc = new moment("20180614, 17:00:00", "YYYYMMDD, LTS");
-        return moment.duration(wc.diff(now)).days();
-    };
-
-    $rootScope.timeToWorldCupHours = function () {
-        var now = new moment();
-        var wc = new moment("20180614, 17:00:00", "YYYYMMDD, LTS");
-        return moment.duration(wc.diff(now)).hours();
-    };
-
-    $rootScope.timeToWorldCupMinutes = function () {
-        var now = new moment();
-        var wc = new moment("20180614, 17:00:00", "YYYYMMDD, LTS");
-        return moment.duration(wc.diff(now)).minutes();
-    };
-
-    $rootScope.timeToWorldCupSeconds = function () {
-        var now = new moment();
-        var wc = new moment("20180614, 17:00:00", "YYYYMMDD, LTS");
-        return moment.duration(wc.diff(now)).seconds();
-    };
-
 
 });
 

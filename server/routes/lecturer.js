@@ -3,13 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/attenders');
 mongoose.Promise = global.Promise;
-const promise = require('promise');
-const mail = require('./activate');
-const rand = require("random-key");
-const hostname = 'localhost:3000';
 const departments = require('../enums/departmentsEnum');
 const courses = require('../enums/coursesEnum');
 const Subject = require('../model/subjectModel');
+const Lecture = require('../model/lectureModel');
 
 router.get('/allSubjects', function (req, resp) {
     const response = {};
@@ -36,5 +33,25 @@ router.post('/addSubject', function (req, resp) {
             });
         }
     })
+});
+
+router.post('/addLecture', function (req, resp) {
+    Lecture.findOne({$and: [{topic: req.body.topic}, {subject: req.body.subject}, {date: req.body.date}, {startHour: req.body.startHour}, {endHour: req.body.endHour}, {lecturer: req.body.lecturer}]}, function (err, obj) {
+        if (err) throw err;
+        if(obj){
+            resp.status(409).end("Such a lecture was already created");
+        }
+        else {
+            Lecture.create(req.body).then(function(lecture){
+                resp.end(JSON.stringify(lecture));
+            });
+        }
+    })
+});
+
+router.post('/lecturersLectures', function (req, resp) {
+    Lecture.find({lecturer: req.body.lecturer}, function (err, lectures) {
+        resp.end(JSON.stringify(lectures));
+    });
 });
 module.exports = router;

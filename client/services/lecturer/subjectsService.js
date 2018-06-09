@@ -10,6 +10,12 @@ app.factory('subjectsService', function($http, $sessionStorage, Notification, $l
             return $http.post('/lecturer/lecturersSubjects', {lecturer: lecturer}).then(function (response) {
                 return response.data;
             });
+        },
+        getAllLecturesForCurrentLecturer : function () {
+            var lecturer = $sessionStorage.get('auth');
+            return $http.post('/lecturer/lecturersLectures', {lecturer: lecturer}).then(function (response) {
+                return response.data;
+            });
         }
     }
 });

@@ -1,7 +1,77 @@
 <div class="container-fluid">
+    <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-2">
+            <button class="btn-nocolor-full" ng-click="addingLecture = true">New lecture</button>
+        </div>
+    </div>
+    <div ng-if="addingLecture"class="row justify-content-center">
+            <div class="col-8 newSubject-form">
+                <form name="newLectureForm" ng-submit="addLecture(newLectureForm.$valid)" method="post" novalidate autocomplete="off">
+                    <!--md-datepicker ng-model="myDate" md-placeholder="Enter Date"></md-datepicker-->
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Topic of new lecture:</h3>
+                            <input id="name" name="name" type="text" ng-required="true" ng-model="form.name">
+                            <div ng-if="newLectureForm.name.$invalid && formError" ng-messages="newLectureForm.name.$error">
+                                <p ng-message="required" class="form-alert">Topic is required</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h3>Subject:</h3>
+                            <select name="subject" ng-required="true" ng-model="form.subject" ng-options="value as value.name for value in mySubjects"">
+                            <option>--</option>
+                            </select>
+                            <div ng-if="newLectureForm.subject.$invalid && formError" ng-messages="newLectureForm.subject.$error">
+                                <p ng-message="required" class="form-alert">Department is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-left">
+                        <div class="col-12 col-lg-3">
+                            <h3>Date:</h3>
+                            <md-datepicker ng-model="form.myDate" md-placeholder="Enter date" md-min-date="currentDate"></md-datepicker>
+                        </div>
+                        <div class="col-12 col-lg-2">
+                            <h3>Start hour:</h3>
+                            <input type="time" id="startHour" name="startHour" ng-model="form.startHour" placeholder="HH:mm" min="07:00" max="21:00" ng-required="true">
+                            <div ng-if="newLectureForm.startHour.$invalid && formError" ng-messages="newLectureForm.startHour.$error">
+                                <p ng-message="required" class="form-alert">Start hour is required</p>
+                                <p ng-message="min" class="form-alert">Minimum time is 07:00</p>
+                                <p ng-message="max" class="form-alert">Maximum time is 21:00</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-2">
+                            <h3>Duration (in minutes):</h3>
+                            <input type="number" id="duration" name="duration" ng-model="form.duration" min="1" max="200" ng-required="true">
+                            <div ng-if="newLectureForm.duration.$invalid && formError" ng-messages="newLectureForm.duration.$error">
+                                <p ng-message="required" class="form-alert">Duration is required</p>
+                                <p ng-message="min" class="form-alert">Number is too small</p>
+                                <p ng-message="max" class="form-alert">Number is too large</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 offset-lg-2">
+                            <button class="btn-color-full mt-4" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
     <div class="row">
-        <div class="col-8 offset-2">
-            <md-datepicker ng-model="myDate" md-placeholder="Enter Date"></md-datepicker>
+        <div class="col-10 offset-1">
+            <div class="row subjects-header">
+                <div class="col-2">Date</div>
+                <div class="col-3">Topic</div>
+                <div class="col-3">Subject</div>
+                <div class="col-2">Start hour</div>
+                <div class="col-2">End hour</div>
+            </div>
+            <div ng-repeat="lecture in myLectures | orderBy : 'date'" class="row subjects-child">
+                <div class="col-2">{{lecture.date}}</div>
+                <div class="col-3">{{lecture.topic}}</div>
+                <div class="col-3">{{lecture.subjectName}}</div>
+                <div class="col-2">{{lecture.startHour}}</div>
+                <div class="col-2">{{lecture.endHour}}</div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-.newSubject-form input[type=text], [type=number]{
+.newSubject-form input[type=text], [type=number], [type=time]{
     width: 100%;
     height: 40px;
     background-color: #f9f9f9;

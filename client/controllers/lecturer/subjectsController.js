@@ -29,7 +29,7 @@ app.controller('subjectsCtrl', function($rootScope, $scope, $http, Notification,
             }
             else {
                 $http.post('/lecturer/addSubject', {"name": $scope.form.name, "department": $scope.form.currentDepartment.name, "course": $scope.form.course.name, "semester": $scope.form.semester, "lecturer": $rootScope.loggedUser._id}).then(function (response) {
-                    Notification.success({message: "The new subject is added", delay: 5000});
+                    Notification.success({message: "The new subject has been added", delay: 5000});
                     $scope.addingSubject = false;
                     $scope.loadMySubjects();
                     $scope.form = {};
