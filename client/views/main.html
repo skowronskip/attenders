@@ -1,7 +1,66 @@
-<div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col-8 offset-2">
-            <h1>MAIN PAGE</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#courseInfoModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="courseInfoModal" tabindex="-1" role="dialog" aria-labelledby="courseInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="courseInfoModalLabel">Set your course information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="main-modal-info" name="courseInfoForm" ng-submit="updateInfo(courseInfoForm.$valid)" method="post" novalidate autocomplete="off">
+                        <div class="row">
+                            <div class="col-10 offset-1 main-modal-info-box mt-1 mb-4">
+                                <p>You have logged in first time!</p>
+                                <p>In order to use the application, you have to complete information about your study stage!</p>
+                                <p>Give us information about your department, course and semester.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                <h3>Department:</h3>
+                                <select name="department" ng-required="true" ng-model="form.currentDepartment" ng-options="value as value.name for value in departments" ng-change="updateCourses()">
+                                    <option>--</option>
+                                </select>
+                                <div ng-if="courseInfoForm.department.$invalid && formError" ng-messages="courseInfoForm.department.$error">
+                                    <p ng-message="required" class="form-alert">Department is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                <h3>Course:</h3>
+                                <select name="course" ng-required="true" ng-model="form.course" ng-options="value as value.name for value in currentCourses">
+                                    <option>--</option>
+                                </select>
+                                <div ng-if="courseInfoForm.course.$invalid && formError" ng-messages="courseInfoForm.course.$error">
+                                    <p ng-message="required" class="form-alert">Course is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                <h3>Semester:</h3>
+                                <input id="semester" name="semester" type="number" ng-model="form.semester" ng-required="true" min="1" max="8">
+                                <div ng-if="courseInfoForm.semester.$invalid && formError" ng-messages="courseInfoForm.semester.$error">
+                                    <p ng-message="required" class="form-alert">Semester is required</p>
+                                    <p ng-message="min" class="form-alert">The number is too small</p>
+                                    <p ng-message="max" class="form-alert">The number is too large</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-2 mb-5">
+                            <div class="col-4">
+                                <button class="btn-color-full" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

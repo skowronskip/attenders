@@ -32,5 +32,9 @@ app.config(function($routeProvider, $locationProvider, $rootScopeProvider) {
         .when("/lecturer/subjects", {
             templateUrl : "views/lecturer/subjects.html",
             controller: 'subjectsCtrl'
+        })
+        .when("/profile", {
+            templateUrl : "views/profile.html",
+            controller: 'profileCtrl'
         });
 });

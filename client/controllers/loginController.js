@@ -21,6 +21,9 @@ app.controller('loginCtrl', function($rootScope, $scope, $http, Notification, $c
     $scope.submit = function() {
         if(!$scope.validateLogin && !$scope.validatePassword && !$scope.isLecturer){
             $http.post('/login', {"login": $scope.login, "password": $scope.password}).then(function (response) {
+                if(!response.data.course){
+                    $sessionStorage.put('courseInfoModal', true);
+                }
                 $sessionStorage.put('auth', response.data._id);
                 Notification.success({message: 'You are logged in', delay: 5000});
                 $rootScope.loadUser();

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1>Profile Page</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center profile-field mt-5">
+        <div class="col-4 text-right">First name:</div>
+        <div class="col-4">{{loggedUser.firstName}}</div>
+    </div>
+    <div class="row justify-content-center profile-field">
+        <div class="col-4 text-right">Last name:</div>
+        <div class="col-4">{{loggedUser.lastName}}</div>
+    </div>
+    <div class="row justify-content-center profile-field">
+        <div class="col-4 text-right">E-mail:</div>
+        <div class="col-4">{{loggedUser.mail}}</div>
+    </div>
+    <div ng-if="loggedUser.course" class="row justify-content-center profile-field">
+        <div class="col-4 text-right">Department:</div>
+        <div class="col-4">{{myDepartmentName}}</div>
+    </div>
+    <div ng-if="loggedUser.course" class="row justify-content-center profile-field">
+        <div class="col-4 text-right">Course:</div>
+        <div class="col-4">{{loggedUser.course.name}}</div>
+    </div>
+    <div ng-if="loggedUser.course" class="row justify-content-center profile-field">
+        <div class="col-4 text-right">Semester:</div>
+        <div class="col-4">{{loggedUser.semester}}</div>
+    </div>
+</div>

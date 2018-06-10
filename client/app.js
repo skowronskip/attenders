@@ -12,7 +12,7 @@ app.run(function ($rootScope, $cookies, $location, Notification, $http, $session
             }
             return true;
         }
-        else if($location.url() === '/createPredictions'){
+        else if($location.url() === '/profile'){
             $location.path('/');
         }
         return false;

@@ -7,6 +7,7 @@ const sessions = require('express-session');
 // API file for interacting with MongoDB
 const api = require('./server/routes/api');
 const lecturer = require('./server/routes/lecturer');
+const student = require('./server/routes/student');
 
 
 // Parsers
@@ -25,6 +26,7 @@ app.use('/bower_components', express.static(path.join(__dirname, 'bower_componen
 // API location
 app.use('/', api);
 app.use('/lecturer', lecturer);
+app.use('/student', student);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

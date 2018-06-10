@@ -36,6 +36,20 @@ const UserSchema = new Schema({
     },
     role: {
         type: String
+    },
+    mail: {
+        type: String
+    },
+    semester: {
+        type: Number
+    },
+    course : {
+        departmentCode: {
+            type: String
+        },
+        name: {
+            type: String
+        }
     }
 });
 

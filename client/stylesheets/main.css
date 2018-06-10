@@ -4,6 +4,7 @@
 @import url("footer.css");
 @import url("subject.css");
 @import url("lectures.css");
+@import url("profile.css");
 
 :root {
     --main-blue: #128545;
@@ -78,4 +79,42 @@ h3 {
 .btn-nocolor-full:hover {
     background-color: var(--main-blue);
     color: white;
+}
+
+.main-modal-info input[type=text], [type=number], [type=time]{
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px var(--main-blue) solid;
+    padding: 0 20px;
+    color: var(--main-blue);
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.main-modal-info select{
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px var(--main-blue) solid;
+    padding: 0 20px;
+    color: var(--main-blue);
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.main-modal-info-box {
+    background-color: #f9f9f9;
+    border: 1px #d8d8d8 solid;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #353535;
+    padding: 5px 0;
+}
+
+.main-modal-info-box p {
+    margin: 3px 0;
+    text-align: center;
 }

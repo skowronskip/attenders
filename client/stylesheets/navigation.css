@@ -1,3 +1,29 @@
+.nav-top-bar a {
+    color: white;
+    border: 1px white solid;
+    font-weight: bold;
+    margin-left: 15px;
+    padding: 0 20px;
+    -webkit-transition: color 400ms, background-color 400ms; /* Safari */
+    transition: color 400ms, background-color 400ms;
+}
+
+.nav-top-bar a:hover {
+    text-decoration: none;
+    background-color: white;
+    color: #086020;
+}
+
+.nav-top-bar {
+    font-size: 12px;
+    background-color: #086020;
+    color: white;
+    padding: 5px 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
 .navigation-bar {
     height: 120px;
     background-color: var(--main-blue);
@@ -50,12 +76,6 @@
     color: var(--main-blue);
 }
 
-.nav-top-bar {
-     font-size: 12px;
-     background-color: #086020;
-     color: white;
-     padding: 5px 10px;
-}
 
 .nav-timer {
     background-color: #086020;

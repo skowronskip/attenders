@@ -16,19 +16,30 @@ addUser = function (content) {
   return new promise(function(res, rej){
     User.findOne({indexNumber: content.indexNumber}, function(err,obj){
       if(err) throw err;
-      if(obj){
-        if(obj){
+      if(obj.indexNumber){
             res({message: "This index number is already registered."});
-        }
+
       }
       else{
         content.password = bcrypt.hashSync(content.password, salt);
         content.activationToken = rand.generate(24);
         if(content.indexNumber){
             content.role = 'STUDENT';
+            content.mail = content.indexNumber + '@edu.p.lodz.pl';
         }
         else {
             content.role = 'LECTURER';
+            content.mail = content.firstName + '.' + content.lastName + '@edu.p.lodz.pl';
+            content.mail = content.mail.toLowerCase();
+            content.mail = content.mail.replace(/ą/g, "a");
+            content.mail = content.mail.replace(/ę/g, "e");
+            content.mail = content.mail.replace(/ć/g, "c");
+            content.mail = content.mail.replace(/ń/g, "n");
+            content.mail = content.mail.replace(/ł/g, "l");
+            content.mail = content.mail.replace(/ó/g, "o");
+            content.mail = content.mail.replace(/ż/g, "z");
+            content.mail = content.mail.replace(/ź/g, "z");
+            content.mail = content.mail.replace(/ś/g, "s");
         }
         User.create(content).then(function(user){
           res(user);

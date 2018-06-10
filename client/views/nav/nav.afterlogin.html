@@ -5,6 +5,8 @@
         </div>
         <div class="col-7 text-right">
             {{ 'Welcome ' + loggedUser.firstName + ' ' + loggedUser.lastName}}
+            <a href="/profile">Profile</a>
+            <a href="/" ng-click="logout()">Log out</a>
         </div>
     </div>
     <div class="row navigation-bar justify-content-center">
@@ -17,7 +19,6 @@
         <div class="col-4 navigation-bar-button text-right">
             <a ng-if="loggedUser.role === 'LECTURER'" href="/lecturer/subjects">Subjects</a>
             <a ng-if="loggedUser.role === 'LECTURER'" href="/lectures">Lectures</a>
-            <a href="/" ng-click="logout()">Log out</a>
         </div>
     </div>
 </div>
