@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/attenders');
-//mongoose.connect('mongodb://typeruser:typermocnehaslo2@ds016128.mlab.com:16128/typermssd');
+//mongoose.connect('mongodb://localhost:27017/attenders');
+mongoose.connect('mongodb://attendersuser:attenders1@ds255260.mlab.com:55260/attenders');
 mongoose.Promise = global.Promise;
 const User = require('../model/userModel');
 const bcrypt = require('bcrypt');
@@ -16,9 +16,11 @@ addUser = function (content) {
   return new promise(function(res, rej){
     User.findOne({indexNumber: content.indexNumber}, function(err,obj){
       if(err) throw err;
-      if(obj.indexNumber){
-            res({message: "This index number is already registered."});
+      if(obj){
+          if(obj.indexNumber){
+              res({message: "This index number is already registered."});
 
+          }
       }
       else{
         content.password = bcrypt.hashSync(content.password, salt);

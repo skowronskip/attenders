@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/attenders');
+//mongoose.connect('mongodb://localhost:27017/attenders');
+mongoose.connect('mongodb://attendersuser:attenders1@ds255260.mlab.com:55260/attenders');
 mongoose.Promise = global.Promise;
 const User = require('../model/userModel');
 const Lecture = require('../model/lectureModel');
