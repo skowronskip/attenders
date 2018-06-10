@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div ng-show="!isRating" class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 checkin mt-5">
+            <h1 class="mb-5">Give PIN which you can see at the screen!</h1>
+            <div class="checkin-pinbox">
+                <h3><strong>PIN:</strong></h3>
+                <input type="number" id="pin" name="pin" ng-model="givenPin">
+                <button class="btn-color-full" ng-click="checkIn()" ng-disabled="givenPin < 100000 || givenPin > 999999 || !givenPin">CHECK IN</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="isRating" class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 checkin mt-5 text-center">
+            <h1 class="mb-5">Now you can annomysouly rate this lecture</h1>
+            <i ng-click="rate = 1" ng-class="rate>0 ? 'fa fa-star checkin-star-active' : 'fa fa-star checkin-star'"></i>
+            <i ng-click="rate = 2" ng-class="rate>1 ? 'fa fa-star checkin-star-active' : 'fa fa-star checkin-star'"></i>
+            <i ng-click="rate = 3" ng-class="rate>2 ? 'fa fa-star checkin-star-active' : 'fa fa-star checkin-star'"></i>
+            <i ng-click="rate = 4" ng-class="rate>3 ? 'fa fa-star checkin-star-active' : 'fa fa-star checkin-star'"></i>
+            <i ng-click="rate = 5" ng-class="rate>4 ? 'fa fa-star checkin-star-active' : 'fa fa-star checkin-star'"></i>
+            <button class="btn-color-full mt-5" ng-click="rateAttendance()">Submit</button>
+        </div>
+    </div>
+</div>

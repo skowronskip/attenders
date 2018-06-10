@@ -35,11 +35,36 @@ router.post('/checkAttendance', function (req, resp) {
             attentance.lecture = obj._id;
             attentance.student = req.body.id;
             attentance.creationDate = req.body.moment;
-            Attendance.create(attentance);
-            resp.end();
+            attentance.rate = req.body.rate;
+            Attendance.findOne({$and: [{lecture: attentance.lecture, student: attentance.student}]}, function (err, obj) {
+                if (err) throw err;
+                if(obj) {
+                    resp.status(409).end("You have already checked in for this lecture");
+                }
+                else {
+                    Attendance.create(attentance).then(function (response) {
+                        resp.end(JSON.stringify(response));
+                    });
+                }
+            });
         }
         else {
             resp.status(409).end("Wrong PIN. Try again!");
+        }
+    });
+});
+
+router.put('/rateAttendance', function (req, resp) {
+    Attendance.findOne({_id: req.body.id}, function (err, obj) {
+        if (err) throw err;
+        if(obj) {
+            Attendance.updateOne({_id: req.body.id}, {$set: {rate: req.body.rate}}, function (err, obj) {
+                if (err) throw err;
+                resp.end();
+            });
+        }
+        else {
+            resp.status(409).end("Some error occured.");
         }
     });
 });

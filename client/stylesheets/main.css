@@ -5,6 +5,7 @@
 @import url("subject.css");
 @import url("lectures.css");
 @import url("profile.css");
+@import url("checkin.css");
 
 :root {
     --main-blue: #128545;
@@ -60,6 +61,14 @@ h3 {
 
 .btn-color-full:hover {
     background-color: var(--main-red);
+}
+
+.btn-color-full:disabled {
+    background-color: #d9d9d9;
+}
+
+.btn-color-full:disabled:hover {
+    background-color: #d9d9d9;
 }
 
 .btn-nocolor-full  {

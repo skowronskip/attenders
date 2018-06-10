@@ -17,6 +17,7 @@
             <a href="/">Home</a>
         </div>
         <div class="col-4 navigation-bar-button text-right">
+            <a ng-if="loggedUser.role === 'STUDENT'" href="/checkin">CHECK IN</a>
             <a ng-if="loggedUser.role === 'LECTURER'" href="/lecturer/subjects">Subjects</a>
             <a ng-if="loggedUser.role === 'LECTURER'" href="/lectures">Lectures</a>
         </div>

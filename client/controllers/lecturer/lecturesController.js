@@ -42,10 +42,12 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
                         }
                     });
                     lecture.date = moment(lecture.date).format('L');
-                    lecture.startHour = moment(lecture.startHour).format('LT');
-                    lecture.endHour = moment(lecture.endHour).format('LT');
-                    if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('LT') && lecture.endHour >= moment().format('LT')){
+                    lecture.startHour = moment(lecture.startHour).format('hh:mm a');
+                    lecture.endHour = moment(lecture.endHour).format('hh:mm a');
+
+                    if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('hh:mm a') && lecture.endHour >= moment().format('hh:mm a')){
                         lecture.canBeOpen = true;
+                        console.log(lecture);
                     }
                 });
             });
@@ -57,7 +59,7 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
             $scope.checked = false;
             $scope.randomPin = Math.floor(Math.random()*899999)+100000;
             $scope.counter = 6;
-            $scope.openCounter = 18;
+            $scope.openCounter = 60;
             $http.put('/lecturer/openLecture', {"id": $scope.currentModalLecture._id, "pin": $scope.randomPin});
             $scope.randomPinGenerate = function () {
                 $scope.randomPin = Math.floor(Math.random()*899999)+100000;

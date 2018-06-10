@@ -1,0 +1,33 @@
+.checkin input {
+    text-align: center;
+    font-size: 35px;
+    height: 50px;
+    letter-spacing: 15px;
+}
+
+.checkin-pinbox {
+    border: 1px #d5d5d5 solid;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 25px 35px;
+}
+
+.checkin i {
+    font-size: 50px;
+}
+
+.checkin-star {
+    font-size: 50px;
+    padding: 5px;
+    color: #d0d0d0;
+}
+
+.checkin-star:hover {
+    color: #999999;
+}
+
+.checkin-star-active {
+    font-size: 50px;
+    padding: 5px;
+    color: #e8b925;
+}

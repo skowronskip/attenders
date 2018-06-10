@@ -12,6 +12,9 @@ const AttendanceSchema = new Schema({
     student: {
         type: Schema.Types.ObjectId,
         ref: 'students'
+    },
+    rate: {
+        type: Number
     }
 });
 

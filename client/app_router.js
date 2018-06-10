@@ -36,5 +36,9 @@ app.config(function($routeProvider, $locationProvider, $rootScopeProvider) {
         .when("/profile", {
             templateUrl : "views/profile.html",
             controller: 'profileCtrl'
+        })
+        .when("/checkin", {
+            templateUrl : "views/checkin.html",
+            controller: 'checkinCtrl'
         });
 });
