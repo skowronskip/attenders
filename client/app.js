@@ -3,7 +3,7 @@ app.run(function ($rootScope, $cookies, $location, Notification, $http, $session
     moment.locale('gb');
     $rootScope.testvariable = 'No witam Cie z rootscope';
     $rootScope.loggedUser = {};
-    $rootScope.hostname = 'typerms.atthost24.pl';
+    $rootScope.hostname = 'attenders.typerms.atthost24.pl';
     $rootScope.isLogged = function () {
         const logged = $sessionStorage.get('auth');
         if (logged) {
