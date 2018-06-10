@@ -28,6 +28,17 @@ const LectureSchema = new Schema({
     },
     key: {
         type: String
+    },
+    isOpen: {
+        type: Boolean,
+        default: false
+    },
+    pin: {
+        type: Number
+    },
+    checked: {
+        type: Boolean,
+        default: false
     }
 });
 

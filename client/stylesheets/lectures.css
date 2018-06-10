@@ -1,3 +1,33 @@
 md-datepicker {
     width: 100%;
 }
+
+.openreg-date {
+    text-align: center;
+    font-size: 30px;
+    margin: 5px 0;
+}
+
+.openreg-topic {
+    text-align: center;
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.openreg-subject {
+    text-align: center;
+    font-size: 26px;
+    margin: 5px 0;
+}
+
+.openreg-pin {
+    text-align: center;
+    font-size: 70px;
+    margin: 10px 0;
+}
+
+.openreg-counter {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 0;
+}

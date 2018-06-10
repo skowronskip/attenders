@@ -49,7 +49,7 @@ const departments = [
     },
     {
         code: "13",
-        name: "Centrum Kształcenia Międzynarodowego"
+        name: "International Faculty of Engineering"
     }
 ];
 

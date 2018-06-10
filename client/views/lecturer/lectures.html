@@ -1,3 +1,4 @@
+<div ng-include="'views/modals/openregistraton.html'"></div>
 <div class="container-fluid">
     <div class="row justify-content-center mt-4 mb-4">
         <div class="col-2">
@@ -62,15 +63,17 @@
                 <div class="col-2">Date</div>
                 <div class="col-3">Topic</div>
                 <div class="col-3">Subject</div>
-                <div class="col-2">Start hour</div>
-                <div class="col-2">End hour</div>
+                <div class="col-1">Start hour</div>
+                <div class="col-1">End hour</div>
+                <div class="col-2">Open registration</div>
             </div>
             <div ng-repeat="lecture in myLectures | orderBy : 'date'" class="row subjects-child">
                 <div class="col-2">{{lecture.date}}</div>
                 <div class="col-3">{{lecture.topic}}</div>
                 <div class="col-3">{{lecture.subjectName}}</div>
-                <div class="col-2">{{lecture.startHour}}</div>
-                <div class="col-2">{{lecture.endHour}}</div>
+                <div class="col-1">{{lecture.startHour}}</div>
+                <div class="col-1">{{lecture.endHour}}</div>
+                <div class="col-2"><button ng-click="modalLecture(lecture)" class="btn-color-full-small" ng-disabled="!lecture.canBeOpen">Start registration</button></div>
             </div>
         </div>
     </div>

@@ -1,0 +1,50 @@
+<div class="modal fade bd-example-modal-lg" id="openLecture" tabindex="-1" role="dialog" aria-labelledby="openLectureLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="openLectureLabel">Start checking attendance!</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row openreg-date">
+                        <div class="col-12">
+                            {{'Date: ' + currentModalLecture.date + ' ' + currentModalLecture.startHour + ' - ' + currentModalLecture.endHour}}
+                        </div>
+                    </div>
+                    <div class="row openreg-topic">
+                        <div class="col-12">
+                            {{'Topic: ' + currentModalLecture.topic}}
+                        </div>
+                    </div>
+                    <div class="row openreg-subject">
+                        <div class="col-12">
+                            {{'Subject: ' + currentModalLecture.subjectName}}
+                        </div>
+                    </div>
+                    <div ng-if="isChecking" class="row mt-5 openreg-pin">
+                        <div class="col-12">
+                            Current Pin: <strong>{{randomPin}}</strong>
+                        </div>
+                    </div>
+                    <div ng-if="isChecking" class="row openreg-counter">
+                        <div class="col-12">
+                            Pin changes in: <strong>{{counter}} seconds</strong>
+                        </div>
+                        <div class="col-12">
+                            You have: <strong>{{openCounter}} seconds</strong> to mark your attendance!
+                        </div>
+                    </div>
+                    <div ng-if="!isChecking && checked" class="row mt-5 openreg-topic">
+                        <div class="col-12">
+                            <strong>The attendance has been checked!</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-if="!isChecking" type="button" class="btn btn-secondary" ng-click="hideModal()">Close</button>
+                <button ng-if="!isChecking && !checked" type="button" ng-click="openRegistration()" class="btn btn-primary">Start checking attendance!</button>
+            </div>
+        </div>
+    </div>
+</div>

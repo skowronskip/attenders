@@ -16,6 +16,36 @@ router.get('/allSubjects', function (req, resp) {
     resp.end(JSON.stringify(response));
 });
 
+router.put('/openLecture', function (req,resp) {
+    Lecture.findOne({_id: req.body.id}, function (err, obj) {
+        if (err) throw err;
+        if(obj){
+            Lecture.updateOne({_id: req.body.id}, {$set: {isOpen: true, pin: req.body.pin}}, function (err, obj) {
+                if (err) throw err;
+                resp.end();
+            });
+        }
+        else {
+            resp.status(409).end("Lecture not found");
+        }
+    });
+});
+
+router.put('/closeLecture', function (req,resp) {
+    Lecture.findOne({_id: req.body.id}, function (err, obj) {
+        if (err) throw err;
+        if(obj){
+            Lecture.updateOne({_id: req.body.id}, {$set: {isOpen: false, checked: true}}, function (err, obj) {
+                if (err) throw err;
+                resp.end();
+            });
+        }
+        else {
+            resp.status(409).end("Lecture not found");
+        }
+    });
+});
+
 router.post('/lecturersSubjects', function (req, resp) {
     Subject.find({lecturer: req.body.lecturer}, function (err, subjects) {
         resp.end(JSON.stringify(subjects));

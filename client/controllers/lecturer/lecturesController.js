@@ -1,4 +1,4 @@
-app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification, $cookies, $location, subjectsService) {
+app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification, $cookies, $location, subjectsService, $interval, $route) {
     if($rootScope.loggedUser.role !== 'LECTURER') {
         $location.path('/');
     }
@@ -8,6 +8,7 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
     $scope.form = {};
     $scope.formError = false;
     $scope.addingLecture = false;
+    $scope.currentModalLecture = undefined;
     subjectsService.getAllSubjectsForCurrentLecturer().then(function (response) {
         $scope.mySubjects = response;
 
@@ -43,9 +44,58 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
                     lecture.date = moment(lecture.date).format('L');
                     lecture.startHour = moment(lecture.startHour).format('LT');
                     lecture.endHour = moment(lecture.endHour).format('LT');
+                    if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('LT') && lecture.endHour >= moment().format('LT')){
+                        lecture.canBeOpen = true;
+                    }
                 });
             });
         };
         $scope.loadMyLectures();
+
+        $scope.openRegistration = function() {
+            $scope.isChecking = true;
+            $scope.checked = false;
+            $scope.randomPin = Math.floor(Math.random()*899999)+100000;
+            $scope.counter = 6;
+            $scope.openCounter = 18;
+            $http.put('/lecturer/openLecture', {"id": $scope.currentModalLecture._id, "pin": $scope.randomPin});
+            $scope.randomPinGenerate = function () {
+                $scope.randomPin = Math.floor(Math.random()*899999)+100000;
+                $http.put('/lecturer/openLecture', {"id": $scope.currentModalLecture._id, "pin": $scope.randomPin});
+                $scope.counter = 7;
+            };
+            $scope.countdown = function () {
+                $scope.counter--;
+            };
+
+            $scope.openCountdown = function () {
+                $scope.openCounter--;
+                if($scope.openCounter === 0) {
+                    $interval.cancel(pinInterval);
+                    $interval.cancel(countdownInterval);
+                    $interval.cancel(openInterval);
+                    $http.put('/lecturer/closeLecture', {"id": $scope.currentModalLecture._id});
+                    $scope.isChecking = false;
+                    $scope.checked = true;
+                }
+            };
+
+            var pinInterval = $interval($scope.randomPinGenerate, 6000);
+            var countdownInterval = $interval($scope.countdown, 1000);
+            var openInterval = $interval($scope.openCountdown, 1000);
+        };
+
+        $scope.modalLecture = function (lecture) {
+            $scope.currentModalLecture = lecture;
+            $('#openLecture').modal({
+                keyboard: false,
+                backdrop: 'static'
+            });
+        };
+
+        $scope.hideModal = function () {
+            $('#openLecture').modal('hide');
+            $route.reload();
+        };
     });
 });

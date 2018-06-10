@@ -76,6 +76,34 @@ h3 {
     transition: background-color 400ms color, 400ms;
 }
 
+.btn-color-full-small  {
+    width:100%;
+    margin:0;
+    background-color: var(--main-blue);
+    color: white;
+    font-size: 14px;
+    padding: 5px 0;
+    border: none;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: background-color 400ms; /* Safari */
+    transition: background-color 400ms;
+}
+
+.btn-color-full-small:disabled {
+    background-color: #a5a5a5;
+}
+
+.btn-color-full-small:disabled:hover {
+    background-color: #a5a5a5;
+}
+
+.btn-color-full-small:hover {
+    background-color: var(--main-red);
+}
+
+
+
 .btn-nocolor-full:hover {
     background-color: var(--main-blue);
     color: white;

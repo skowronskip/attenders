@@ -27,6 +27,7 @@ app.controller('mainCtrl', function($rootScope, $scope, $http, Notification, $co
                 }
                 $http.put('/student/updateUser', {"id": $sessionStorage.get('auth'), "course": $scope.form.course, "semester": $scope.form.semester}).then(function (response) {
                     $('#courseInfoModal').modal('hide');
+                    $rootScope.loadUser();
                     Notification.success({message: 'Your info has been updated', delay: 5000});
                     $sessionStorage.remove('courseInfoModal');
                 }).catch(function (err) {
