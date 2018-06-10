@@ -25,6 +25,9 @@ const LectureSchema = new Schema({
     lecturer: {
         type: Schema.Types.ObjectId,
         ref: 'users'
+    },
+    key: {
+        type: String
     }
 });
 

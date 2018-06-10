@@ -7,6 +7,7 @@ const departments = require('../enums/departmentsEnum');
 const courses = require('../enums/coursesEnum');
 const Subject = require('../model/subjectModel');
 const Lecture = require('../model/lectureModel');
+const rand = require("random-key");
 
 router.get('/allSubjects', function (req, resp) {
     const response = {};
@@ -42,6 +43,7 @@ router.post('/addLecture', function (req, resp) {
             resp.status(409).end("Such a lecture was already created");
         }
         else {
+            req.body.key = rand.generate(8);
             Lecture.create(req.body).then(function(lecture){
                 resp.end(JSON.stringify(lecture));
             });
