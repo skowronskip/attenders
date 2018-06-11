@@ -42,10 +42,10 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
                         }
                     });
                     lecture.date = moment(lecture.date).format('L');
-                    lecture.startHour = moment(lecture.startHour).format('hh:mm a');
-                    lecture.endHour = moment(lecture.endHour).format('hh:mm a');
+                    lecture.startHour = moment(lecture.startHour).format('HH:mm');
+                    lecture.endHour = moment(lecture.endHour).format('HH:mm');
 
-                    if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('hh:mm a') && lecture.endHour >= moment().format('hh:mm a')){
+                    if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('HH:mm a') && lecture.endHour >= moment().format('HH:mm')){
                         lecture.canBeOpen = true;
                         console.log(lecture);
                     }
