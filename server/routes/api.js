@@ -53,31 +53,61 @@ addUser = function (content) {
 
 findUser = function (content) {
   return new promise(function (res, rej) {
-    User.findOne({$or: [{indexNumber: content.login}, {firstName: content.firstName, lastName: content.lastName}]}, function(err,obj){
-      if(err) throw err;
-      if(obj) {
-        bcrypt.compare(content.password, obj.password, function (err, resp) {
-          if(err) throw err;
-          if(resp) {
-            if(obj.active === true && obj.resetPass === false){
-              res(obj);
-            }
-            else if(obj.active === false) {
-                res({message: "Active your account first."});
-            }
-            else if(obj.resetPass === true){
-                res({message: "End your process of reseting password first."});
-            }
-          }
-          else {
-            res({message: "Your password is incorrect."});
-          }
-        });
+      if(content.login){
+          User.findOne({indexNumber: content.login}, function(err,obj){
+              if(err) throw err;
+              if(obj) {
+                  bcrypt.compare(content.password, obj.password, function (err, resp) {
+                      if(err) throw err;
+                      if(resp) {
+                          if(obj.active === true && obj.resetPass === false){
+                              res(obj);
+                          }
+                          else if(obj.active === false) {
+                              res({message: "Active your account first."});
+                          }
+                          else if(obj.resetPass === true){
+                              res({message: "End your process of reseting password first."});
+                          }
+                      }
+                      else {
+                          res({message: "Your password is incorrect."});
+                      }
+                  });
+              }
+              else {
+                  res({message: "There is no user with this index number."});
+              }
+          });
       }
       else {
-        res({message: "There is no user with this index number."});
+          User.findOne({firstName: content.firstName, lastName: content.lastName}, function(err,obj){
+              if(err) throw err;
+              if(obj) {
+                  bcrypt.compare(content.password, obj.password, function (err, resp) {
+                      if(err) throw err;
+                      if(resp) {
+                          if(obj.active === true && obj.resetPass === false){
+                              res(obj);
+                          }
+                          else if(obj.active === false) {
+                              res({message: "Active your account first."});
+                          }
+                          else if(obj.resetPass === true){
+                              res({message: "End your process of reseting password first."});
+                          }
+                      }
+                      else {
+                          res({message: "Your password is incorrect."});
+                      }
+                  });
+              }
+              else {
+                  res({message: "There is no user with this index number."});
+              }
+          });
       }
-    });
+
   });
 };
 
