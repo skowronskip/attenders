@@ -71,7 +71,12 @@
                 <div class="col-3">{{subject.department}}</div>
                 <div class="col-3">{{subject.course}}</div>
                 <div class="col-1">{{subject.semester}}</div>
-                <div class="col-1"><button ng-click="openStatistics(subject)" class="btn-action"><i class="fa fa-bar-chart"></i></button></div>
+                <div class="col-1">
+                    <button ng-click="openStatistics(subject)" class="btn-action">
+                        <i class="fa fa-bar-chart"></i>
+                        <md-tooltip md-direction="top">Show statistics for this subject</md-tooltip>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

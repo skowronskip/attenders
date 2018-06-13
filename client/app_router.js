@@ -48,5 +48,8 @@ app.config(function($routeProvider, $locationProvider, $rootScopeProvider) {
         .when("/lecturer/subject/:key", {
             templateUrl : "views/lecturer/subject.statistics.html",
             controller: 'statisticsSubjectCtrl'
+        })
+        .when("/howitworks", {
+            templateUrl : "views/howitworks.html"
         });
 });

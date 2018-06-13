@@ -74,8 +74,14 @@
                 <div class="col-1">{{lecture.startHour}}</div>
                 <div class="col-1">{{lecture.endHour}}</div>
                 <div class="col-2">
-                    <button ng-click="modalLecture(lecture)" class="btn-action" ng-disabled="!lecture.canBeOpen"><i class="fa fa-check"></i></button>
-                    <button ng-click="openStatistics(lecture)" class="btn-action" ng-disabled="!lecture.checked"><i class="fa fa-bar-chart"></i></button>
+                    <button ng-click="modalLecture(lecture)" class="btn-action" ng-disabled="!lecture.canBeOpen">
+                        <i class="fa fa-check"></i>
+                        <md-tooltip md-direction="top">Start checking attendance</md-tooltip>
+                    </button>
+                    <button ng-click="openStatistics(lecture)" class="btn-action" ng-disabled="!lecture.checked">
+                        <i class="fa fa-bar-chart"></i>
+                        <md-tooltip md-direction="top">Show statistics for this lecture</md-tooltip>
+                    </button>
                 </div>
             </div>
         </div>
