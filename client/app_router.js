@@ -40,5 +40,13 @@ app.config(function($routeProvider, $locationProvider, $rootScopeProvider) {
         .when("/checkin", {
             templateUrl : "views/checkin.html",
             controller: 'checkinCtrl'
+        })
+        .when("/lecturer/lecture/:key", {
+            templateUrl : "views/lecturer/lecture.statistics.html",
+            controller: 'statisticsCtrl'
+        })
+        .when("/lecturer/subject/:key", {
+            templateUrl : "views/lecturer/subject.statistics.html",
+            controller: 'statisticsSubjectCtrl'
         });
 });

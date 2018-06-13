@@ -19,7 +19,6 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
             else {
                 var timeStart = new moment($scope.form.startHour);
                 var timeEnd = moment($scope.form.startHour).add($scope.form.duration, 'minutes');
-                console.log($scope.form);
                $http.post('/lecturer/addLecture', {"topic": $scope.form.name, "subject": $scope.form.subject._id, "date": $scope.form.myDate, "startHour": timeStart, "endHour": timeEnd, "lecturer": $rootScope.loggedUser._id}).then(function (response) {
                     Notification.success({message: "The new lecture has been added", delay: 5000});
                     $scope.addingLecture = false;
@@ -47,7 +46,6 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
 
                     if(!lecture.checked && lecture.date === moment().format('L') && lecture.startHour <= moment().format('HH:mm a') && lecture.endHour >= moment().format('HH:mm')){
                         lecture.canBeOpen = true;
-                        console.log(lecture);
                     }
                 });
             });
@@ -98,6 +96,11 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
         $scope.hideModal = function () {
             $('#openLecture').modal('hide');
             $route.reload();
+        };
+
+        $scope.openStatistics = function (lecture) {
+            $rootScope.lectureForStatistics = lecture;
+          $location.path('/lecturer/lecture/' + lecture.key);
         };
     });
 });

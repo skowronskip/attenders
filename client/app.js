@@ -1,9 +1,9 @@
-var app = angular.module('Attenders', ['ngRoute', 'ui-notification', 'ngCookies', 'ngSessionStorage', 'ngMessages', 'ngMaterial']);
+var app = angular.module('Attenders', ['ngRoute', 'ui-notification', 'ngCookies', 'ngSessionStorage', 'ngMessages', 'ngMaterial', 'nvd3']);
 app.run(function ($rootScope, $cookies, $location, Notification, $http, $sessionStorage, $interval) {
     moment.locale('gb');
     $rootScope.testvariable = 'No witam Cie z rootscope';
     $rootScope.loggedUser = {};
-    $rootScope.hostname = 'attenders.typerms.atthost24.pl';
+    $rootScope.hostname = 'attenders.atthost24.pl';
     $rootScope.isLogged = function () {
         const logged = $sessionStorage.get('auth');
         if (logged) {

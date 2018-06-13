@@ -6,6 +6,7 @@
 @import url("lectures.css");
 @import url("profile.css");
 @import url("checkin.css");
+@import url("statistics.css");
 
 :root {
     --main-blue: #128545;
@@ -111,10 +112,35 @@ h3 {
     background-color: var(--main-red);
 }
 
-
-
 .btn-nocolor-full:hover {
     background-color: var(--main-blue);
+    color: white;
+}
+
+.btn-action  {
+    margin:0;
+    padding: 0;
+    background-color: var(--main-blue);
+    border: 1px var(--main-blue) solid;
+    color: white;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: background-color 400ms, color 400ms; /* Safari */
+    transition: background-color 400ms, color 400ms;
+}
+
+.btn-action:hover {
+    color: var(--main-blue);
+    background-color: white;
+}
+
+.btn-action:disabled {
+    background-color: #a5a5a5;
+    border: 1px #a5a5a5 solid;
+}
+
+.btn-action:disabled:hover {
+    background-color: #a5a5a5;
     color: white;
 }
 

@@ -25,7 +25,7 @@
 .subjects-header {
     background-color: var(--main-blue);
     color: white;
-    font-size: 14px;
+    font-size: 15px;
     padding: 5px 0 5px 0;
     font-weight: bold;
 }
@@ -35,7 +35,19 @@
     padding: 7px 5px;
     border-bottom: #e5e5e5 1px solid;
     font-size: 15px;
+    line-height: 28px;
 }
 .subjects-child:hover {
     background-color: #f0f0f0;
+}
+
+.subjects-child i {
+    padding: 0;
+    margin: 5px 5px 6px 6px;
+}
+
+.subjects-child button {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
 }

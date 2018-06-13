@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row statistics-header mt-5">
+        <div class="col-4 offset-2">
+            <h1>Subject: {{subjectForStatistics.name}}</h1>
+            <h3>{{subjectForStatistics.department}}, {{subjectForStatistics.course}}</h3>
+            <h3>Number of total lectures: <strong>{{statistics.numberOfLectures}}</strong></h3>
+            <h4 class="mb-5">Average rating: {{statistics.rating.average | number:2}}</h4>
+            <img ng-if="statistics.rating.average>=0 && statistics.rating.average<0.5" src="../../assets/stars/1.png">
+            <img ng-if="statistics.rating.average>=0.5 && statistics.rating.average<1" src="../../assets/stars/2.png">
+            <img ng-if="statistics.rating.average>=1 && statistics.rating.average<1.5" src="../../assets/stars/3.png">
+            <img ng-if="statistics.rating.average>=1.5 && statistics.rating.average<2" src="../../assets/stars/4.png">
+            <img ng-if="statistics.rating.average>=2 && statistics.rating.average<2.5" src="../../assets/stars/5.png">
+            <img ng-if="statistics.rating.average>=2.5 && statistics.rating.average<3" src="../../assets/stars/6.png">
+            <img ng-if="statistics.rating.average>=3 && statistics.rating.average<3.5" src="../../assets/stars/7.png">
+            <img ng-if="statistics.rating.average>=3.5 && statistics.rating.average<4" src="../../assets/stars/8.png">
+            <img ng-if="statistics.rating.average>=4 && statistics.rating.average<4.5" src="../../assets/stars/9.png">
+            <img ng-if="statistics.rating.average>=4.5 && statistics.rating.average<5" src="../../assets/stars/10.png">
+            <nvd3 options="options" data="data"></nvd3>
+
+        </div>
+        <div class="col-4">
+            <h4>Average amount of students: {{statistics.allPresences / statistics.numberOfLectures | number:2}}</h4>
+            <h3 class="text-right">Maximum amount of students: <strong>{{statistics.maxPresences}}</strong></h3>
+            <h3 class="text-right">Minimum amount of students: <strong>{{statistics.minPresences}}</strong></h3>
+            <div class="statistics-pie"><nvd3 options="pieOptions" data="pieValues"></nvd3></div>
+        </div>
+    </div>
+</div>

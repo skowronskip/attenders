@@ -1,5 +1,4 @@
 app.controller('subjectsCtrl', function($rootScope, $scope, $http, Notification, $cookies, $location, subjectsService) {
-    console.log($rootScope.loggedUser);
     if($rootScope.loggedUser.role !== 'LECTURER') {
         $location.path('/');
     }
@@ -46,4 +45,9 @@ app.controller('subjectsCtrl', function($rootScope, $scope, $http, Notification,
         });
     };
     $scope.loadMySubjects();
+
+    $scope.openStatistics = function (subject) {
+        $rootScope.subjectForStatistics = subject;
+        $location.path('/lecturer/subject/' + subject.key);
+    };
 });

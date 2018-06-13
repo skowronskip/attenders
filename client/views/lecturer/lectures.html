@@ -65,15 +65,18 @@
                 <div class="col-3">Subject</div>
                 <div class="col-1">Start hour</div>
                 <div class="col-1">End hour</div>
-                <div class="col-2">Open registration</div>
+                <div class="col-2">Actions</div>
             </div>
-            <div ng-repeat="lecture in myLectures | orderBy : 'date'" class="row subjects-child">
+            <div ng-repeat="lecture in myLectures | orderBy : '-date + startHour'" class="row subjects-child">
                 <div class="col-2">{{lecture.date}}</div>
                 <div class="col-3">{{lecture.topic}}</div>
                 <div class="col-3">{{lecture.subjectName}}</div>
                 <div class="col-1">{{lecture.startHour}}</div>
                 <div class="col-1">{{lecture.endHour}}</div>
-                <div class="col-2"><button ng-click="modalLecture(lecture)" class="btn-color-full-small" ng-disabled="!lecture.canBeOpen">Start registration</button></div>
+                <div class="col-2">
+                    <button ng-click="modalLecture(lecture)" class="btn-action" ng-disabled="!lecture.canBeOpen"><i class="fa fa-check"></i></button>
+                    <button ng-click="openStatistics(lecture)" class="btn-action" ng-disabled="!lecture.checked"><i class="fa fa-bar-chart"></i></button>
+                </div>
             </div>
         </div>
     </div>

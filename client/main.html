@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="Attenders">
 <head>
+    <meta charset="utf-8">
     <title>Attenders</title>
     <base href="/" />
     <script src="../bower_components/angular/angular.min.js"></script>
@@ -15,6 +16,9 @@
     <script src="../bower_components/angular-material/angular-material.min.js"></script>
     <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/d3/d3.min.js"></script>
+    <script src="../bower_components/nvd3/build/nv.d3.min.js"></script>
+    <script src="../bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
 
     <script src="app.js"></script>
     <script src="app_router.js"></script>
@@ -27,6 +31,8 @@
     <script src="controllers/lecturer/subjectsController.js"></script>
     <script src="controllers/profileController.js"></script>
     <script src="controllers/checkinController.js"></script>
+    <script src="controllers/lecturer/statisticsController.js"></script>
+    <script src="controllers/lecturer/statisticsSubjectController.js"></script>
 
     <script src="services/lecturer/subjectsService.js"></script>
 
@@ -37,6 +43,7 @@
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="stylesheets/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css">
 </head>
 
 <body>

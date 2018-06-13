@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row statistics-header mt-5">
+        <div class="col-4 offset-2">
+            <h1>Topic: {{lectureForStatistics.topic}}</h1>
+            <h2>Subject: {{lectureForStatistics.subjectName}}</h2>
+            <h3>Date: {{lectureForStatistics.date}} {{lectureForStatistics.startHour}} - {{lectureForStatistics.endHour}}</h3>
+            <h4 class="mb-5">Average rating: {{statistics.rating.average | number:2}}</h4>
+            <img ng-if="statistics.rating.average>=0 && statistics.rating.average<0.5" src="../../assets/stars/1.png">
+            <img ng-if="statistics.rating.average>=0.5 && statistics.rating.average<1" src="../../assets/stars/2.png">
+            <img ng-if="statistics.rating.average>=1 && statistics.rating.average<1.5" src="../../assets/stars/3.png">
+            <img ng-if="statistics.rating.average>=1.5 && statistics.rating.average<2" src="../../assets/stars/4.png">
+            <img ng-if="statistics.rating.average>=2 && statistics.rating.average<2.5" src="../../assets/stars/5.png">
+            <img ng-if="statistics.rating.average>=2.5 && statistics.rating.average<3" src="../../assets/stars/6.png">
+            <img ng-if="statistics.rating.average>=3 && statistics.rating.average<3.5" src="../../assets/stars/7.png">
+            <img ng-if="statistics.rating.average>=3.5 && statistics.rating.average<4" src="../../assets/stars/8.png">
+            <img ng-if="statistics.rating.average>=4 && statistics.rating.average<4.5" src="../../assets/stars/9.png">
+            <img ng-if="statistics.rating.average>=4.5 && statistics.rating.average<5" src="../../assets/stars/10.png">
+            <nvd3 options="options" data="data"></nvd3>
+
+        </div>
+        <div class="col-4">
+            <h4>Present students: {{statistics.count}}</h4>
+            <nvd3 options="pieOptions" data="pieValues"></nvd3>
+        </div>
+    </div>
+</div>

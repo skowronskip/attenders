@@ -21,6 +21,9 @@ const SubjectSchema = new Schema({
     lecturer: {
         type: Schema.Types.ObjectId,
         ref: 'users'
+    },
+    key: {
+        type: String
     }
 });
 

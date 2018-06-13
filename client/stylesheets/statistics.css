@@ -1,0 +1,33 @@
+.statistics-header h1 {
+    text-align: left;
+    font-size: 35px;
+}
+
+.statistics-header h2 {
+    text-align: left;
+    font-size: 30px;
+}
+
+.statistics-header h3 {
+    text-align: left;
+    font-size: 20px;
+}
+
+.statistics-header h4 {
+    color: var(--main-blue);
+    text-align: right;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.statistics-header img {
+    display: block;
+    margin-left: auto;
+    margin-top: -30px;
+    margin-bottom: 50px;
+}
+
+.statistics-pie {
+    display: block;
+    margin-left: auto;
+}

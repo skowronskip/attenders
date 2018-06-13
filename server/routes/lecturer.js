@@ -63,6 +63,7 @@ router.post('/addSubject', function (req, resp) {
             resp.status(409).end("Such a subject was already created");
         }
         else {
+            req.body.key = rand.generate(8);
             Subject.create(req.body).then(function(subject){
                 resp.end(JSON.stringify(subject));
             });
@@ -110,6 +111,85 @@ router.post('/statisticsLecture', function (req, resp) {
         }
     });
 });
+
+router.post('/statisticsSubject', function (req, resp) {
+    Subject.findOne({key: req.body.key}, function (err, obj) {
+       if (err) throw err;
+       if(obj) {
+           Lecture.find({subject: obj._id}, function (err, lectures) {
+               if (err) throw err;
+               if(lectures.length !== 0){
+                  var checkedLectures = [];
+                  for(var i=0;i<lectures.length;i++){
+                      if(lectures[i].checked){
+                          checkedLectures.push(lectures[i]);
+                      }
+                  }
+                  statisticsForSubject(checkedLectures, function (response) {
+                     resp.end(JSON.stringify(calculateStatisticsForSubject(response)));
+                  });
+               }
+               else {
+                   resp.status(409).end("The subject hasn't got any lecture yet.");
+               }
+           });
+       }
+    });
+});
+
+function calculateStatisticsForSubject (array) {
+    var response = {};
+    response.allPresences = 0;
+    response.minPresences = array[0].count;
+    response.maxPresences = array[0].count;
+    response.rates = [0,0,0,0,0];
+    response.numberOfLectures = array.length;
+    response.courses = [];
+    var courses = [];
+    for(var i=0;i<array.length;i++){
+        response.allPresences += array[i].count;
+        if(array[i].count < response.minPresences) {
+            response.minPresences = array[i].count
+        }
+        if(array[i].count > response.maxPresences) {
+            response.maxPresences = array[i].count
+        }
+        response.rates[0] += array[i].rating.rates[0];
+        response.rates[1] += array[i].rating.rates[1];
+        response.rates[2] += array[i].rating.rates[2];
+        response.rates[3] += array[i].rating.rates[3];
+        response.rates[4] += array[i].rating.rates[4];
+        courses=array[i].courses;
+        for(var j=0;j<courses.length;j++){
+            var found = false;
+            for(var k=0;k<response.courses.length;k++){
+                if(courses[j].course.departmentCode === response.courses[k].course.departmentCode && courses[j].course.name === response.courses[k].course.name && courses[j].semester === response.courses[k].semester) {
+                    found = true;
+                    response.courses[k].occurences += courses[j].occurences;
+                }
+            }
+            if(!found) {
+                response.courses.push(courses[j]);
+            }
+        }
+
+    }
+    return response;
+}
+
+function statisticsForSubject (array, callback) {
+    var results = [];
+    for(var i=0;i<array.length;i++){
+        if(array[i].checked){
+            calculateStatistics(array[i]._id, function (response) {
+                results.push(response);
+                if(results.length === array.length) {
+                    callback(results);
+                }
+            });
+        }
+    }
+}
 
 function calculateStatistics(id, callback) {
     var response = {};

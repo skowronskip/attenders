@@ -16,6 +16,18 @@ app.factory('subjectsService', function($http, $sessionStorage, Notification, $l
             return $http.post('/lecturer/lecturersLectures', {lecturer: lecturer}).then(function (response) {
                 return response.data;
             });
+        },
+        getStatistics : function (key) {
+            return $http.post('/lecturer/statisticsLecture', {key: key}).then(function (response) {
+                return response.data;
+            });
+        },
+        getSubjectStatistics : function (key) {
+            return $http.post('/lecturer/statisticsSubject', {key: key}).then(function (response) {
+                return response.data;
+            }).catch(function (err) {
+               return err;
+            });
         }
     }
 });
