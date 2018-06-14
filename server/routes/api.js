@@ -10,7 +10,7 @@ const salt = bcrypt.genSaltSync(10);
 const promise = require('promise');
 const mail = require('./activate');
 const rand = require("random-key");
-const hostname = 'localhost:3000';
+const hostname = 'attenders.atthost24.pl';
 
 addUser = function (content) {
   return new promise(function(res, rej){
@@ -31,7 +31,7 @@ addUser = function (content) {
         }
         else {
             content.role = 'LECTURER';
-            content.mail = content.firstName + '.' + content.lastName + '@edu.p.lodz.pl';
+            content.mail = content.firstName + '.' + content.lastName + '@p.lodz.pl';
             content.mail = content.mail.toLowerCase();
             content.mail = content.mail.replace(/ą/g, "a");
             content.mail = content.mail.replace(/ę/g, "e");
@@ -138,7 +138,7 @@ router.post('/register', function(req, resp){
     else if(newUser.role === 'STUDENT'){
         mail.sendMail({
             from: 'ntife17@gmail.com',
-            to: newUser.indexNumber + '@edu.p.lodz.pl',
+            to: newUser.mail,
             subject: 'Active your account [Attenders]',
             text: 'Click in the link in order to active your account: http://' + hostname + '/activate/' + newUser.activationToken
         }, function(error, info){
@@ -153,7 +153,7 @@ router.post('/register', function(req, resp){
     else {
         mail.sendMail({
             from: 'ntife17@gmail.com',
-            to: newUser.firstName + '.' + newUser.lastName + '@edu.p.lodz.pl',
+            to: newUser.mail,
             subject: 'Active your account [Attenders]',
             text: 'Click in the link in order to active your account: http://' + hostname + '/activate/' + newUser.activationToken
         }, function(error, info){
@@ -181,7 +181,7 @@ router.post('/forgotPass', function (req, resp) {
                     if(err) throw err;
                         mail.sendMail({
                             from: 'ntife17@gmail.com',
-                            to: req.body.indexNumber + '@edu.p.lodz.pl',
+                            to: req.body.mail,
                             subject: 'Reset password [Attenders]',
                             text: 'Click the link in order to reset your password: http://' + hostname + '/resetPass/' + token
                         }, function(error, info){
