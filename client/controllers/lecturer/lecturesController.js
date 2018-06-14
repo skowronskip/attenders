@@ -56,13 +56,13 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
             $scope.isChecking = true;
             $scope.checked = false;
             $scope.randomPin = Math.floor(Math.random()*899999)+100000;
-            $scope.counter = 6;
+            $scope.counter = 10;
             $scope.openCounter = 60;
             $http.put('/lecturer/openLecture', {"id": $scope.currentModalLecture._id, "pin": $scope.randomPin});
             $scope.randomPinGenerate = function () {
                 $scope.randomPin = Math.floor(Math.random()*899999)+100000;
                 $http.put('/lecturer/openLecture', {"id": $scope.currentModalLecture._id, "pin": $scope.randomPin});
-                $scope.counter = 7;
+                $scope.counter = 11;
             };
             $scope.countdown = function () {
                 $scope.counter--;
@@ -80,7 +80,7 @@ app.controller('lecturesCtrl', function($rootScope, $scope, $http, Notification,
                 }
             };
 
-            var pinInterval = $interval($scope.randomPinGenerate, 6000);
+            var pinInterval = $interval($scope.randomPinGenerate, 10000);
             var countdownInterval = $interval($scope.countdown, 1000);
             var openInterval = $interval($scope.openCountdown, 1000);
         };
