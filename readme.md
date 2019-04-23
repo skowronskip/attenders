@@ -25,4 +25,4 @@ Used technologies
 - AngularJS
 - MongoDB
 
-Live demo: SOON
+Live demo: http://attenders.pskowron.ski
