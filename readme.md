@@ -26,3 +26,5 @@ Used technologies
 - MongoDB
 
 Live demo: http://attenders.pskowron.ski
+
+This app is using very, very simplified logging system without authentication.
